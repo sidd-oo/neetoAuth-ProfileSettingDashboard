@@ -1,0 +1,23 @@
+{
+  "name": "neetoauth-login-profile-setting-test",
+  "version": "1.0.0",
+  "description": "In this challenge, you will the test login and profile settings functionality.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siddharthsahoo-sidd/neetoauth-login-profile-setting-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/siddharthsahoo-sidd/neetoauth-login-profile-setting-test/issues"
+  },
+  "homepage": "https://github.com/siddharthsahoo-sidd/neetoauth-login-profile-setting-test#readme",
+  "dependencies": {
+    "cypress": "^7.3.0"
+  }
+}
