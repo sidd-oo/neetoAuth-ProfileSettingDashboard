@@ -24,9 +24,20 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+import 'cypress-file-upload';
 
 Cypress.Commands.add('login',(email, password)=>{
     cy.get('[data-cy="login-email-text-field"]').type(email);
     cy.get('[data-cy="login-password-text-field"]').type(password);
+})
+
+Cypress.Commands.add('uploadImg',(imgName, message)=>{
+    cy.get('[data-cy="profile-image-upload-file-field"]').attachFile(imgName);
+    cy.get('[data-cy=toastr-message-container]').should('have.text', message);
+})
+
+Cypress.Commands.add('changeImg',(imgName, message)=>{
+    cy.get('[data-cy=profile-image-upload-label]').attachFile(imgName);
+    cy.get('[data-cy=toastr-message-container]').should('have.text', message);
 })
 
