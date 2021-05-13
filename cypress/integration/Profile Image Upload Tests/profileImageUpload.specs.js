@@ -7,8 +7,7 @@
      cy.fixture("credentials").then((user) => {
         cy.login(user.correct.email,user.correct.password);
       })
-      cy.get('[data-cy=login-submit-button]').click();
-
+      cy.loginSubmit();
       cy.get('.bp3-popover-target > .relative').click();
       cy.get('[data-cy="nav-profile-link"]').click();
   });
@@ -32,31 +31,29 @@
   });
 
   it("Uploading new image of allowed file type using change functionality",()=>{
-    cy.uploadImg('lessThan5MB.jpg','Profile image successfully updated!'); 
-    // cy.wait(5000); 
-    cy.uploadImg('anotherLessThan5MB.jpg','Profile image successfully updated!');
+    cy.uploadImg('lessThan5MB.jpg','Profile image successfully updated!');  
+    cy.changeImg('anotherLessThan5MB.jpg','Profile image successfully updated!');
   })
 
   it("Uploading new image more than 5MB using change functionality",()=>{
     cy.uploadImg('lessThan5MB.jpg','Profile image successfully updated!'); 
-    // cy.wait(5000); 
-    cy.uploadImg('anotherMoreThan5MB.jpg','Something went wrong.');
+    cy.wait(6000); 
+    cy.changeImg('anotherMoreThan5MB.jpg','Something went wrong.');
   })
 
   it("Uploading multiple new images using change functionality",()=>{
     cy.uploadImg('lessThan5MB.jpg','Profile image successfully updated!'); 
-    // cy.wait(5000); 
     cy.get('[data-cy=profile-image-upload-label]').attachFile('./anotherLessThan5MB').attachFile('./lessThan5MB');
     //There is no "Something went wrong message" while uploading multiple images using change button
   })
 
-  it("Uploading unallowed file type (.pdf) using change functionality",()=>{
-    cy.uploadImg('lessThan5MB.jpg','Profile image successfully updated!'); 
-    // cy.wait(5000); 
-    cy.uploadImg('wrongFileFormat.pdf','Something went wrong.');
+  it.only("Uploading unallowed file type (.pdf) using change functionality",()=>{
+    cy.uploadImg('lessThan5MB.jpg','Profile image successfully updated!');  
+    cy.wait(2000);
+    cy.changeImg('wrongFileFormat.pdf','Something went wrong.');
   })
 
-  it.only("Removing the image",()=>{
+  it("Removing the image",()=>{
     cy.uploadImg('lessThan5MB.jpg','Profile image successfully updated!');
     cy.get('[data-cy=profile-image-remove-button]').click();
     cy.contains('Profile image successfully removed!').should('be.visible');

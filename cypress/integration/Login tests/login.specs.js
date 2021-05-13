@@ -2,7 +2,7 @@
  
  describe("NeetoAuth Login Test", () => {
    let userDetails;
-
+   
    beforeEach(() => {
      cy.viewport(1280,720);
      cy.visit('https://spinkart.neetoauth.net')
