@@ -25,13 +25,13 @@
   });
 
   it("Uploading new image of allowed file type using change functionality",()=>{
-    cy.uploadImg('lessThan5MB.jpg','Profile image successfully updated!');  
-    cy.changeImg('anotherLessThan5MB.jpg','Profile image successfully updated!');
+    cy.uploadImg('lessThan5MB.jpg','Profile image successfully updated!');
+    cy.uploadImg('anotherLessThan5MB.jpg','Profile image successfully updated!');
   })
-
+  
   it("Uploading new image more than 5MB using change functionality",()=>{
     cy.uploadImg('lessThan5MB.jpg','Profile image successfully updated!'); 
-    cy.wait(6000); 
+    cy.wait(5000);   
     cy.changeImg('anotherMoreThan5MB.jpg','Something went wrong.');
   })
 
@@ -41,10 +41,10 @@
     //There is no "Something went wrong message" while uploading multiple images using change button
   })
 
-  it.only("Uploading unallowed file type (.pdf) using change functionality",()=>{
+  it("Uploading unallowed file type (.pdf) using change functionality",()=>{
     cy.uploadImg('lessThan5MB.jpg','Profile image successfully updated!');  
-    cy.wait(2000);
-    cy.changeImg('wrongFileFormat.pdf','Something went wrong.');
+    cy.wait(5000);
+    cy.uploadImg('wrongFileFormat.pdf','Something went wrong.');
   })
 
   it("Removing the image",()=>{
