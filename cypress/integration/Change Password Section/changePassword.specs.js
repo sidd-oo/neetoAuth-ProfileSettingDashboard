@@ -35,11 +35,16 @@
         }) 
   })
 
-  it("Reset the password and verify",()=>{
+  it.only("Reset the password and verify",()=>{
       passwordTab();
       cy.fixture("credentials").then((userDetails)=>{
         cy.pwdChange(userDetails.old.password, userDetails.new.password);
         cy.resetPassword(userDetails.new.password, userDetails.old.password); 
+        cy.visit('https://spinkart.neetoauth.net')
+        cy.login(userDetails.old.email,userDetails.old.password);
+        cy.loginSubmit();
+        cy.get('[data-cy=heading]').should('have.text',"Profile Settings");
+        cy.logout();
       }) 
   })
   
