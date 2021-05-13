@@ -1,15 +1,9 @@
  /// <reference types="cypress" />
- 
+ import {profileTab} from '../../utils/profileTab'
+
  describe("NeetoAuth Profile Image upload functionality", () => {
    beforeEach(() => {
-     cy.viewport(1280,720);
-     cy.visit('https://spinkart.neetoauth.net')
-     cy.fixture("credentials").then((user) => {
-        cy.login(user.correct.email,user.correct.password);
-      })
-      cy.loginSubmit();
-      cy.get('.bp3-popover-target > .relative').click();
-      cy.get('[data-cy="nav-profile-link"]').click();
+    profileTab();
   });
     
   it("Uploading image less than 5MB", () => {
