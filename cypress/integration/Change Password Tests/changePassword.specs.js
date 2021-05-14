@@ -1,15 +1,7 @@
  /// <reference types="cypress" />
  import {passwordTab} from  '../../utils/changePasswordTab'
   describe("NeetoAuth change password functionality", () => {
-
-  //  beforeEach(() => {
-  //    passwordTab();
-  //    cy.fixture("credentials").then((user)=>{
-  //       userDetails = user;
-  //     })
-  //   });
     
-
   it("Changing current password and trying to valid it can't login anymore with old password",()=>{
           passwordTab();
           cy.fixture("credentials").then((userDetails)=>{
